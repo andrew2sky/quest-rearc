@@ -21,27 +21,27 @@ This project deploys the Rearc Quest application on AWS using containerization a
 - Git
 
 ## Project Structure
-rearc-quest-assignment/
-├── .git/
-├── .gitignore
-├── README.md
-├── app/
-│   ├── Dockerfile
-│   ├── package.json
-│   ├── src/
-│   │   └── 000.js
-│   └── bin/
-│       ├── 001
-│       ├── 002
-│       ├── 003
-│       ├── 004
-│       ├── 005
-│       └── 006
-└── terraform/
-├── main.tf
-├── variables.tf
-├── outputs.tf
-└── providers.tf
+quest-rearc/
+.git/
+.gitignore
+README.md
+app/
+   Dockerfile
+   package.json
+   src/
+      000.js
+   bin/
+      001
+      002
+      003
+      004
+      005
+      006
+terraform/
+   main.tf
+   variables.tf
+   outputs.tf
+   providers.tf
 
 ## Infrastructure as Code (IaC)
 
@@ -62,10 +62,8 @@ The Terraform files are located in the `terraform/` directory.
 This project uses an S3 backend to store the Terraform state file. This allows for better collaboration and state management. Before you can use this backend, you need to create the necessary AWS resources.
 
 ### Setting up the S3 Backend
-Created AWS S3 bucket "quest-app-terraform-state" manually using the AWS Management Console
-
+1. Created AWS S3 bucket "quest-app-terraform-state" manually using the AWS Management Console
 2. Enable versioning on the S3 bucket: Using the AWS Management console
-3. Create a DynamoDB table for state locking: Using the AWS Management console
 
 
 ## Docker Configuration
@@ -75,8 +73,8 @@ The Dockerfile is located in the `app/` directory and is used to build the conta
 ## Deployment Instructions
 
 1. Clone the repository:
-git clone https://github.com/andrew2sky/rearc-quest-assignment.git
-cd rearc-quest-assignment
+git clone https://github.com/andrew2sky/quest-rearc.git
+cd quest-rearc
 
 2. Build and push the Docker image:
 aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 821106082324.dkr.ecr.eu-west-1.amazonaws.com
@@ -129,5 +127,6 @@ Given more time, the following improvements could be made to enhance the solutio
 12. Use AWS X-Ray for distributed tracing to better understand and debug the application.
 13. Implement proper health checks for the ECS tasks.
 14. Set up automated testing for both the infrastructure and the application.
+15. The naming convention of files should be proper, don't use the "000.js" or directory name like "001" etc. 
 
 These improvements would make the solution more robust, secure, and production-ready.
